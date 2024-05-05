@@ -1,4 +1,3 @@
-ls
 .TH HSH 1
 .SH NAME
 hsh \- Holberton Shell	
@@ -52,7 +51,7 @@ command1 || command2
 command2 is executed if and only if command1 returns a non-zero exit status.  The return status of AND and OR lists is the exit status of the last command executed in the list.
 .SH AUTHORS
 Ogtay Muradov \- Holberton School Software Engineer Student
-Bakhish Umudlu\- Holberton School Software Engineer Student
+Bakhish Umudlu \- Holberton School Software Engineer Student
 .SH VERSIONS
 .B hsh
 V1.0.0
