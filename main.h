@@ -1,5 +1,5 @@
-#ifndef O_X_H
-#define O_X_H
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,10 +10,13 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <string.h>
+
 extern char **environ;
+
 char *read_command(void);
 void parse_arguments(char *command, char **args);
 int execute_command(char *command);
 void search_and_execute(char *args[], char *command);
 int main(void);
+
 #endif

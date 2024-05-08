@@ -1,4 +1,4 @@
-#include "O_X.h"
+#include "main.h"
 
 /**
  * read_command - Reads a command from the standard input.
@@ -10,6 +10,7 @@ char *read_command(void)
 	char *command = NULL;
 	size_t bufsize = 0;
 	ssize_t read_bytes = getline(&command, &bufsize, stdin);
+
 	if (read_bytes == -1)
 	{
 		free(command);
@@ -19,6 +20,7 @@ char *read_command(void)
 		command[read_bytes - 1] = '\0';
 	return (command);
 }
+
 /**
  * parse_arguments - Parses the given command into arguments.
  *
@@ -29,7 +31,9 @@ void parse_arguments(char *command, char **args)
 {
 	int arg_count = 0;
 	char *token;
+
 	token = strtok(command, " ");
+
 	while (token != NULL && arg_count < 63)
 	{
 		args[arg_count++] = token;
@@ -37,6 +41,7 @@ void parse_arguments(char *command, char **args)
 	}
 	args[arg_count] = NULL;
 }
+
 /**
  * search_and_execute - Searches for and executes the specified command.
  *
@@ -59,16 +64,20 @@ void search_and_execute(char *args[], char *command)
 	else
 	{
 		char *token, *path = getenv("PATH");
+
 		if (path == NULL)
 		{
 			fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
 			free(command);
 			exit(127); }
 		token = strtok(path, ":");
+
 		while (token != NULL)
 		{
 			char exec_path[256];
+
 			snprintf(exec_path, sizeof(exec_path), "%s/%s", token, args[0]);
+
 			if (access(exec_path, X_OK) == 0)
 			{
 				if (execve(exec_path, args, environ) == -1)
@@ -82,6 +91,7 @@ void search_and_execute(char *args[], char *command)
 	fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
 	free(command);
 	exit(127); }
+
 /**
  * execute_command - Executes the given command.
  *
@@ -93,6 +103,7 @@ int execute_command(char *command)
 {
 	int status = 0;
 	pid_t pid = fork();
+
 	if (pid == -1)
 	{
 		perror("fork");
@@ -102,6 +113,7 @@ int execute_command(char *command)
 	else if (pid == 0)
 	{
 		char *args[64];
+
 		parse_arguments(command, args);
 		if (args[0] == NULL)
 		{
@@ -111,6 +123,7 @@ int execute_command(char *command)
 		if (strcmp(args[0], "env") == 0)
 		{
 			char **env = environ;
+
 			while (*env != NULL)
 			{
 				printf("%s\n", *env);
@@ -129,6 +142,8 @@ int execute_command(char *command)
 		else
 			status = (1); }
 		return (status); }
+
+
 /**
  * main - The main function for the simple shell program.
  *
@@ -139,6 +154,7 @@ int main(void)
 	int is_piped = !isatty(fileno(stdin));
 	char *command;
 	int status = 0;
+
 	while (1)
 	{
 		if (!is_piped)
