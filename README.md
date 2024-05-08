@@ -1,58 +1,76 @@
+# C - Simple Shell Group Project
+Team: Sayyar Heydarov, Hamid Hamidbayli
 
-                       _____ _   _ _____    ____    _  _____ _____ ____     ___  _____ 
-                      |_   _| | | | ____|  / ___|  / \|_   _| ____/ ___|   / _ \|  ___|
-                        | | | |_| |  _|   | |  _  / _ \ | | |  _| \___ \  | | | | |_   
-                        | | |  _  | |___  | |_| |/ ___ \| | | |___ ___) | | |_| |  _|  
-                        |_| |_| |_|_____|  \____/_/   \_\_| |_____|____/   \___/|_|    
+## Requirements
 
-                                       ____  _   _ _____ _     _     
-                                      / ___|| | | | ____| |   | |    
-                                      \___ \| |_| |  _| | |   | |    
-                                       ___) |  _  | |___| |___| |___ 
-                                      |____/|_| |_|_____|_____|_____|
-                                                                      
-HSH: The Holberton Shell
-The gates of shell is a Holberton School project in the first trimester, helps student to understand the advanced concepts behind the shell program include process, system call, bit manipulation, file managment, error handling ...
+Allowed editors: vi, vim, emacs
 
-Genreral
-Who designed and implemented the original Unix operating system
-Who wrote the first version of the UNIX shell
-Who invented the B programming language (the direct predecessor to the C programming language)
-Who is Ken Thompson
-How does a shell work
-What is a pid and a ppid
-How to manipulate the environment of the current process
-What is the difference between a function and a system call
-How to create processes
-What are the three prototypes of main
-How does the shell use the PATH to find the programs
-How to execute another program with the execve system call
-How to suspend the execution of a process until one of its children terminates
-What is EOF / “end-of-file”?
-Features
+All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+
+All your files should end with a new line
+
+A README.md file, at the root of the folder of the project is mandatory
+
+Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+
+Your shell should not have any memory leaks
+
+No more than 5 functions per file
+
+All your header files should be include guarded
+
+Use system calls only when you need to 
+
+
+## Tasks
+
+### 0. README, man, AUTHORS
+Write a README
+
+Write a man for your shell.
+
+You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. Format, see Docker
+
+### 1. Betty would be proud
+Write a beautiful code that passes the Betty checks
+
+### 2. Simple shell 0.1
+Write a UNIX command line interpreter.
+
+Usage: simple_shell
+
+Your Shell should:
+
 Display a prompt and wait for the user to type a command. A command line always ends with a new line.
-If an executable cannot be found, print an error message and display the prompt again.
-Handle errors.
-Hndling the “end of file” condition (Ctrl+D)
-Hanling the command line with arguments
-Handle the PATH
-Support the exit features and the exit status
-Handle the Ctrl-C to not terminate the shell
-Handling the command seperator ;
-Handling && and || logical operators
-Handle variable replacements $? and $$
-Handle the comments #
-Support the history feature
-Support the file input
-Builtins
-The exit builtin exit [STATUS]
-The change directory cd [DIRECTORY] | [OPTION]
-Display the environnment variables env
-Initialize a new environnment variables or created if not match setenv [VARIABLE] [VALUE]
-Remove an environnment variable unsetenv [VARIABLE]
-Support the aliases alias [name [='value'] ...]
-Display help help [BUILTIN]
-Display history history
-Authors
-https://www.linkedin.com/in/ogtay-muradov-5b3059125/
 
+The prompt is displayed again each time a command has been executed.
+
+The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+
+The command lines are made only of one word. No arguments will be passed to programs.
+
+If an executable cannot be found, print an error message and display the prompt again.
+
+Handle errors.
+
+You have to handle the “end of file” condition (Ctrl+D)
+
+### 3. Simple shell 0.2
+Handle command lines with arguments
+
+### 4. Simple shell 0.3
+
+Handle the PATH
+
+fork must not be called if the command doesn’t exist
+### 5. Simple shell 0.4
+
+Implement the exit built-in, that exits the shell
+
+Usage: exit
+
+You don’t have to handle any argument to the built-in exit
+
+### 6. Simple shell 1.0
+
+Implement the env built-in, that prints the current environment
