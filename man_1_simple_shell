@@ -1,52 +1,41 @@
-.TH hsh 1 "December 2023" "Version 1.0" "hsh Manual"
+B.\man page for simple shell 
+.\"Created by Santiago vidarte and Federico Jalife
+
+.TH  "December 9 2022" "Simple Shell man page"
 
 .SH NAME
-hsh \- simple shell for executing commands
+\fR \- simple UNIX command interpreter (hsh)
 
 .SH SYNOPSIS
-.B hsh
+.B ./hsh
 
 .SH DESCRIPTION
-.B hsh
-is a simple shell program that reads commands from the user and executes them.
+reads lines from either a file or the terminal, interprets them, and generally executes other commands
 
-.SH FUNCTIONS
-.IP \fBread_command()\fR
-Reads a command from the standard input.
+.SH EXAMPLE:
+$PATH:
+.PP
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
 
-.IP \fBparse_arguments(command, args)\fR
-Parses the command string into arguments.
+.SH INITIALIZATION
+To use our shell the user needs to compile using: 
+.B gcc -Wall -Wextra -Werror -pedantic *.c -o hsh.
 
-.IP \fBexecute_command(command)\fR
-Executes the given command string.
+.PP
+.B EX:
+$ ./hsh 
 
-.IP \fBprint_environment()\fR
-Prints the environment variables.
+.PP
+If the user inputs piplines or calls  non-interactive mode, shell should
+funciton and execute said commands
 
-.IP \fBexecute_from_path(command, args)\fR
-Executes the command from the PATH environment variable.
+.PP
+.B EX:
+$  echo 'ls -a' | ./hsh
 
-.SH RETURN VALUE
-The functions return the exit status of the executed command or -1 if an error occurs.
+.SH BUGS
+No Known Bugs
 
-.SH EXAMPLES
-To execute a command, use the hsh program as follows:
-
-.B hsh
-command
-
-.SH AUTHOR
-Written by Sayyar Heydarov and Hamid Hamidbeyli.
-
-
-.SH SEE ALSO
-.BR sh (1),
-.BR execve (2),
-.BR getenv (3).
-
-.SH COPYRIGHT
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-.SH NOTES
-This man page is based on the hsh program developed for executing shell commands.
+.SH AUTHORS
+Santiago Vidarte
+Federico Jalife
