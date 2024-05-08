@@ -1,50 +1,46 @@
-.TH man_1_simple_shell
-
+.TH SIMPLE_SHELL 1 "December 2023" "Simple Shell Project"
 .SH NAME
-	Simple_shell
+simple_shell \- a simple UNIX command line interpreter
 
 .SH SYNOPSIS
-
-	#include<sys/stat.h>
-	#include<sys/wait.h>
-	#include<fcntl.h>
-	#include<stdio.h>
-	#include<unistd.h>
-	#include<stdlib.h>
-	#include<string.h>
+.B simple_shell
+[\fIcommand\fR]
 
 .SH DESCRIPTION
+The \fBsimple_shell\fR is a basic UNIX command line interpreter developed as part of the Simple Shell Group Project. It interprets user commands and executes them accordingly.
 
-	This program is a simple implementation of a shell that can accept user input,
-	parse the input into separate commands and arguments, and execute the specified command
-	from standard input or a specified file.
+.SH OPTIONS
+The \fBsimple_shell\fR does not support any command-line options.
 
-.SH OPERATION
-Compilation to start the shell: gcc -Wall -Wextra -Werror -pedant *.c -o hsh.
+.SH COMMANDS
+The following commands are supported by the shell:
 
-.B Displays a prompt and waits for the user to type a command, the command line will terminate with a new line.
+.BR exit
+Exits the shell.
 
-.B The prompt is displayed each time a command is executed.
+.BR env
+Prints the current environment.
 
-.B If a command cannot be found, prints an error message and displays the prompt.
+.SH USAGE
+To start the simple shell, run the following command in your terminal:
 
-.B If the user calls the non-interactive mode, the shell must execute those commands.
+.BR simple_shell
 
-.B Handle the "end of file" condition (Ctrl+D).
-
-
-.SH EXAMPLES
-
-	commands with and without flags - Example: "ls -l" "pwd"
-
-	commands with path - Example: "/bin/ls -l" "/bin/pwd"
-
-.SH SEE ALSO
-
-       Bash Reference ManuaL
-       The Gnu Readline Library
+.SH FILES
+.IR /etc/simple_shell/ " - Configuration directory for the simple shell."
 
 .SH AUTHORS
-Johana Amorin and Lauro Lamas.
+Zeynal Mustafayev <7745@holbertonstudents.com>
+Mahammadsaleh Abbas <7773@holbertonstudents.com>
 
+.SH SEE ALSO
+intro(1), bash(1)
 
+.SH BUGS
+No known bugs.
+
+.SH COPYRIGHT
+This manual page was written for the Simple Shell Project by Zeynal Mustafayev and Mahammadsaleh Abbas.
+
+.SH DISCLAIMER
+This manual page is provided "as is" without any warranty.

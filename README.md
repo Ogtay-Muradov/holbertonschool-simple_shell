@@ -1,41 +1,71 @@
+ **- Simple Shell Group Project**
+Team: Zeynal Mustafayev, Mahammadsaleh Abbas
 
+Requirements
+Allowed editors: vi, vim, emacs
 
-#  Simple Shell
+All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 
-This program is a simple implementation of a shell that can accept user input, parse the input into separate commands and arguments, and execute the specified command.
-It uses the getpatharray function to retrieve the directories specified by the PATH environment variable and it uses the check_cmd function to search for the specified command in those directories.
+All your files should end with a new line
 
-###   Features
+A README.md file, at the root of the folder of the project is mandatory
 
-    Accepts user input and parses it into separate commands and arguments
-    Retrieves the directories specified by the PATH environment variable using the getpatharray function
-    Searches for the specified command in the directories using the check_cmd function
-    Creates a child process to execute the specified command
-    Handles errors and provides feedback to the user, such as printing an error message when a command is not found
+Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
 
-## Requirements
-- Allowed editors: vi, vim, emacs
-- All the files will be compiled on Ubuntu 20.04 LTS
-- No more than 5 functions per file
+Your shell should not have any memory leaks
 
-### Compilation
+No more than 5 functions per file
 
-gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-### Usage
+All your header files should be include guarded
 
- Enter any valid command, such as ls or pwd, and the program will search for it in the directories specified by the PATH environment variable.
-If the command is found, the program will create a child process to execute it. If the command is not found, an error message will be printed.
+Use system calls only when you need to
 
-To exit the program, the user can enter the exit command at the prompt. This will cause the program to terminate and free any allocated memory.
+Tasks
+0. README, man, AUTHORS
+Write a README
 
-### Limitations
+Write a man for your shell.
 
-This program is a simple implementation of a shell, and it has several limitations.
-For example, it does not support command history or command completion, and it does not handle signals or other advanced features
+You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. Format, see Docker
 
-It is intended to provide a basic understanding of how a shell works, and it should not be used as a replacement for a full-featured shell.
-### Basic flow chart
+1. Betty would be proud
+Write a beautiful code that passes the Betty checks
 
+2. Simple shell 0.1
+Write a UNIX command line interpreter.
 
-![Untitled (1)](https://user-images.githubusercontent.com/113919575/206880182-6b07a688-5db3-4baf-bef3-c169e8d5ce6b.jpg)
+Usage: simple_shell
 
+Your Shell should:
+
+Display a prompt and wait for the user to type a command. A command line always ends with a new line.
+
+The prompt is displayed again each time a command has been executed.
+
+The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+
+The command lines are made only of one word. No arguments will be passed to programs.
+
+If an executable cannot be found, print an error message and display the prompt again.
+
+Handle errors.
+
+You have to handle the “end of file” condition (Ctrl+D)
+
+3. Simple shell 0.2
+Handle command lines with arguments
+
+4. Simple shell 0.3
+Handle the PATH
+
+fork must not be called if the command doesn’t exist
+
+5. Simple shell 0.4
+Implement the exit built-in, that exits the shell
+
+Usage: exit
+
+You don’t have to handle any argument to the built-in exit
+
+6. Simple shell 1.0
+Implement the env built-in, that prints the current environment
