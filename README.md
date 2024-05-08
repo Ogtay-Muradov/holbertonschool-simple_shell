@@ -1,63 +1,41 @@
-## Our Simple Shell
 
-![N|Solid](https://blog.holbertonschool.com/wp-content/uploads/2019/04/instagram_feed180.jpg)
 
-This is our project making a simple shell similiar to the _SH_
-Shell is simply a macro processor that executes commands. The term macro processor means functionality where text and symbols are expanded to create larger expressions.
-The shell is a program that takes commands from the keyboard and gives them to the operating system to perform On most Linux systems a program called bash 
+#  Simple Shell
+
+This program is a simple implementation of a shell that can accept user input, parse the input into separate commands and arguments, and execute the specified command.
+It uses the getpatharray function to retrieve the directories specified by the PATH environment variable and it uses the check_cmd function to search for the specified command in those directories.
+
+###   Features
+
+    Accepts user input and parses it into separate commands and arguments
+    Retrieves the directories specified by the PATH environment variable using the getpatharray function
+    Searches for the specified command in the directories using the check_cmd function
+    Creates a child process to execute the specified command
+    Handles errors and provides feedback to the user, such as printing an error message when a command is not found
 
 ## Requirements
+- Allowed editors: vi, vim, emacs
+- All the files will be compiled on Ubuntu 20.04 LTS
+- No more than 5 functions per file
 
-* Allowed editors: vi, vim, emacs
-* All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
-* All your files should end with a new line
-* A README.md file, at the root of the folder of the project is mandatory
-* Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-* Your shell should not have any memory leaks
-* No more than 5 functions per file
-* All your header files should be include guarded
-* Use system calls only when you need to 
+### Compilation
 
-## Compilation 
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+### Usage
 
-Your shell will be compiled this way:
+ Enter any valid command, such as ls or pwd, and the program will search for it in the directories specified by the PATH environment variable.
+If the command is found, the program will create a child process to execute it. If the command is not found, an error message will be printed.
 
-`gcc -Wall -Werror -Wextra -pedantic *.c`
+To exit the program, the user can enter the exit command at the prompt. This will cause the program to terminate and free any allocated memory.
 
-## Downloading
+### Limitations
 
-You can download this repository like this:
+This program is a simple implementation of a shell, and it has several limitations.
+For example, it does not support command history or command completion, and it does not handle signals or other advanced features
 
-`git clone https://github.com/Fedejalife99/holbertonschool-simple_shell`
+It is intended to provide a basic understanding of how a shell works, and it should not be used as a replacement for a full-featured shell.
+### Basic flow chart
 
-## Testing
 
-Shells can be used in interactively or non-interactively modes. In interactive mode, they accept input typed from the keyboard and when is executing non-interactively, shells execute commands read from a file.
+![Untitled (1)](https://user-images.githubusercontent.com/113919575/206880182-6b07a688-5db3-4baf-bef3-c169e8d5ce6b.jpg)
 
-Our shell should work like this in interactive mode:
-
-$ ./hsh
-($) /bin/ls
-hsh main.c shell.c
-($)
-($) exit
-$
-
-Our shell should work like this in non interactive mode:
-
-$ echo "/bin/ls" | ./hsh
-hsh main.c shell.c test_ls_2
-$
-$ cat test_ls_2
-/bin/ls
-/bin/ls
-$
-$ cat test_ls_2 | ./hsh
-hsh main.c shell.c test_ls_2
-hsh main.c shell.c test_ls_2
-$
-
-## Authors
-
-Santiago Vidarte
-Federico Jalife

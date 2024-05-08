@@ -1,68 +1,40 @@
-#include "main.h"
+#include "shell.h"
 
-/*
-* main - our simple shell program
-* Return: 0 on success
-*/
-int main(void)
+/**
+ * main - Shell Main
+ *
+ * Return: Exit status of last command used, or 0 if no command passed.
+ */
+
+int main(__attribute__((unused)) int argc, char **argv)
 {
-        char *buf = NULL, *IsValidPath = NULL;
-        char **parameters = NULL, *newline = "\n", **paths = NULL;
-        size_t bufSize = 0;
-        int inputLen = 0;
-        char *buf_aux;
-  
-        while (1)
-        {
-                if (isatty(0))
-                        printf("$ ");
-                inputLen = getline(&buf, &bufSize, stdin);
-                if (inputLen == -1)
-                {
-                        if (buf)
-                        {
-                                free(buf), buf = NULL;
-                        }
-                        exit(0);
-                }
-                if (_strcmp(buf, "\n") == 0)
-                {
-                        free(buf),  buf = NULL;
-                        continue;
-                }
-                buf_aux = _strdup(buf), strtok(buf_aux, newline);
-                free(buf), buf = NULL;
-                if (_strcmp(buf_aux, "exit") == 0 || inputLen == -1)
-                {
-                        free(buf_aux);
-                        exit(0);
-                }
-                parameters = creatoken(buf_aux);
-                if (!parameters || !parameters[0])
-                {
-                        free_p(parameters);
-                        continue;
-                }
-                if (access(parameters[0], F_OK) == 0)
-                {
-                        fork_and_exec(parameters[0], parameters), free_p(parameters);
-                        continue;
-                }
-                paths = path_dirs_to_p();
-                if (!paths)
-                {
-                        _printf("Error: failed allocating memory\n");
-                        free_p(parameters);
-                        continue;
-                }
-                IsValidPath = check_access(paths, parameters[0]);
-                if (!IsValidPath)
-                {
-                        free_p(parameters), free_p(paths);
-                        continue;
-                }
-                fork_and_exec(IsValidPath, parameters);
-                free_p(paths), free_p(parameters), free(IsValidPath);
-        }
-  return (0);
+	char *inputstr, **array, *path = getpath();
+	char **patharray = getpatharray();
+	int mode = 1, status = 0;
+	uli num_of_tokens;
+	uli path_tokens = get_num_of_tokens(path, ':');
+
+	free(path);
+	while (mode)
+	{
+		mode = isatty(STDIN_FILENO);
+		inputstr = get_input_str(mode);
+		if (inputstr)
+		{
+			num_of_tokens = get_num_of_tokens(inputstr, ' ');
+			array = str_to_array(inputstr, num_of_tokens, " \n\t");
+			if ((_strcmp(inputstr, "exit\n") == 0) || (_strcmp(array[0], "exit") == 0))
+			{
+				free_all(array, num_of_tokens, patharray, path_tokens, inputstr);
+				return (WEXITSTATUS(status));
+			}
+			array[0] = check_cmd(array, patharray, argv[0]);
+			if (array[0])
+				status = fork_and_exec(array);
+			free_grid(array, num_of_tokens);
+			free(inputstr);
+		}
+	}
+	free_grid(patharray, path_tokens);
+	return (0);
 }

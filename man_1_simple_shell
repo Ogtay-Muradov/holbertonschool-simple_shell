@@ -1,41 +1,50 @@
-B.\man page for simple shell 
-.\"Created by Santiago vidarte and Federico Jalife
-
-.TH  "December 9 2022" "Simple Shell man page"
+.TH man_1_simple_shell
 
 .SH NAME
-\fR \- simple UNIX command interpreter (hsh)
+	Simple_shell
 
 .SH SYNOPSIS
-.B ./hsh
+
+	#include<sys/stat.h>
+	#include<sys/wait.h>
+	#include<fcntl.h>
+	#include<stdio.h>
+	#include<unistd.h>
+	#include<stdlib.h>
+	#include<string.h>
 
 .SH DESCRIPTION
-reads lines from either a file or the terminal, interprets them, and generally executes other commands
 
-.SH EXAMPLE:
-$PATH:
-.PP
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
+	This program is a simple implementation of a shell that can accept user input,
+	parse the input into separate commands and arguments, and execute the specified command
+	from standard input or a specified file.
 
-.SH INITIALIZATION
-To use our shell the user needs to compile using: 
-.B gcc -Wall -Wextra -Werror -pedantic *.c -o hsh.
+.SH OPERATION
+Compilation to start the shell: gcc -Wall -Wextra -Werror -pedant *.c -o hsh.
 
-.PP
-.B EX:
-$ ./hsh 
+.B Displays a prompt and waits for the user to type a command, the command line will terminate with a new line.
 
-.PP
-If the user inputs piplines or calls  non-interactive mode, shell should
-funciton and execute said commands
+.B The prompt is displayed each time a command is executed.
 
-.PP
-.B EX:
-$  echo 'ls -a' | ./hsh
+.B If a command cannot be found, prints an error message and displays the prompt.
 
-.SH BUGS
-No Known Bugs
+.B If the user calls the non-interactive mode, the shell must execute those commands.
+
+.B Handle the "end of file" condition (Ctrl+D).
+
+
+.SH EXAMPLES
+
+	commands with and without flags - Example: "ls -l" "pwd"
+
+	commands with path - Example: "/bin/ls -l" "/bin/pwd"
+
+.SH SEE ALSO
+
+       Bash Reference ManuaL
+       The Gnu Readline Library
 
 .SH AUTHORS
-Santiago Vidarte
-Federico Jalife
+Johana Amorin and Lauro Lamas.
+
+

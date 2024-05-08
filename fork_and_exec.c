@@ -1,15 +1,27 @@
-#include "main.h"
+#include "shell.h"
 
-void fork_and_exec(char *command, char **parameters)
+/**
+*fork_and_exec - fork and excve
+*@args: arguments
+*
+*Return: status
+*/
+
+int fork_and_exec(char **args)
 {
-	extern char **environ;
 	pid_t id;
 	int status;
 
 	id = fork();
+
+	wait(&status);
+
 	if (id == 0)
-		execve(command, parameters, environ);
-	else
-		wait(&status);
-	return;
+	{
+		execve(args[0], args, environ);
+		printf("Error: Exec failed\n");
+		return (0);
+	}
+
+	return (status);
 }
