@@ -1,5 +1,5 @@
  **- Simple Shell Group Project**
-Team: Zeynal Mustafayev, Mahammadsaleh Abbas
+Team: Ogtay Muradov, Bakhish Umudlu
 
 Requirements
 Allowed editors: vi, vim, emacs
